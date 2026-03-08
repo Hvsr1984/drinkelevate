@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import { useCartStore, type ShopifyProduct } from "@/stores/cartStore";
+import { playBubbleSound, playBottleOpenSound } from "@/lib/sounds";
 import { toast } from "sonner";
 
 interface ProductCardProps {
