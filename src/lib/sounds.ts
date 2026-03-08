@@ -14,7 +14,7 @@ export function playBubbleSound() {
   // Create 3-4 rapid bubble pops
   for (let i = 0; i < 4; i++) {
     const osc = ctx.createOscillator();
-    const gain = ctx.createGainNode();
+    const gain = ctx.createGain();
     const filter = ctx.createBiquadFilter();
 
     filter.type = 'bandpass';
