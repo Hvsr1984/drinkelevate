@@ -66,7 +66,7 @@ export function playBottleOpenSound() {
 
   // Pop sound
   const pop = ctx.createOscillator();
-  const popGain = ctx.createGainNode();
+  const popGain = ctx.createGain();
   pop.type = 'sine';
   pop.frequency.setValueAtTime(600, now);
   pop.frequency.exponentialRampToValueAtTime(150, now + 0.08);
