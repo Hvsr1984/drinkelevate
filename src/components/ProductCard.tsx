@@ -20,7 +20,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     e.preventDefault();
     e.stopPropagation();
     if (!variant) return;
-    await addItem({
+    playBottleOpenSound();
+    playBubbleSound();
       product,
       variantId: variant.id,
       variantTitle: variant.title,
