@@ -88,7 +88,7 @@ export function playBottleOpenSound() {
   fizzFilter.type = 'highpass';
   fizzFilter.frequency.value = 4000;
 
-  const fizzGain = ctx.createGainNode();
+  const fizzGain = ctx.createGain();
   fizzGain.gain.setValueAtTime(0, now + 0.05);
   fizzGain.gain.linearRampToValueAtTime(0.08, now + 0.1);
   fizzGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
