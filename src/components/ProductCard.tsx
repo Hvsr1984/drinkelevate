@@ -22,6 +22,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     if (!variant) return;
     playBottleOpenSound();
     playBubbleSound();
+    await addItem({
       product,
       variantId: variant.id,
       variantTitle: variant.title,
