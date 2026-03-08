@@ -50,7 +50,7 @@ export function playBubbleSound() {
   noiseFilter.frequency.value = 2000;
   noiseFilter.Q.value = 1.5;
 
-  const noiseGain = ctx.createGainNode();
+  const noiseGain = ctx.createGain();
   noiseGain.gain.setValueAtTime(0, now);
   noiseGain.gain.linearRampToValueAtTime(0.06, now + 0.05);
   noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
