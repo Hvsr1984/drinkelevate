@@ -126,11 +126,6 @@ export function playBottleOpenSound() {
   fizz.start(now + 0.05);
   fizz.stop(now + 0.55);
 }
-  const ctx = getAudioContext();
-  const now = ctx.currentTime;
-
-  // Pop sound
-  const pop = ctx.createOscillator();
   const popGain = ctx.createGain();
   pop.type = 'sine';
   pop.frequency.setValueAtTime(600, now);

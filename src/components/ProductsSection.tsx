@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { storefrontApiRequest, STOREFRONT_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { ProductCard } from "./ProductCard";
+import { WaterBubbles } from "./WaterBubbles";
 import { Loader2 } from "lucide-react";
 
 export const ProductsSection = () => {
