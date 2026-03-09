@@ -32,6 +32,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1500);
     toast.success("Added to cart", {
       description: product.node.title,
       position: "top-center",
