@@ -11,7 +11,6 @@ export function playBubbleSound() {
   const ctx = getAudioContext();
   const now = ctx.currentTime;
 
-  // Create 3-4 rapid bubble pops
   for (let i = 0; i < 4; i++) {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -37,7 +36,6 @@ export function playBubbleSound() {
     osc.stop(t + 0.12);
   }
 
-  // Soft water swoosh
   const noise = ctx.createBufferSource();
   const bufferSize = ctx.sampleRate * 0.3;
   const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
@@ -60,11 +58,37 @@ export function playBubbleSound() {
   noise.stop(now + 0.3);
 }
 
+export function playWaterDropSound() {
+  const ctx = getAudioContext();
+  const now = ctx.currentTime;
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(1200, now);
+  osc.frequency.exponentialRampToValueAtTime(400, now + 0.15);
+  gain.gain.setValueAtTime(0.2, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + 0.25);
+
+  const ripple = ctx.createOscillator();
+  const rippleGain = ctx.createGain();
+  ripple.type = 'sine';
+  ripple.frequency.setValueAtTime(800, now + 0.1);
+  ripple.frequency.exponentialRampToValueAtTime(300, now + 0.25);
+  rippleGain.gain.setValueAtTime(0.08, now + 0.1);
+  rippleGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+  ripple.connect(rippleGain).connect(ctx.destination);
+  ripple.start(now + 0.1);
+  ripple.stop(now + 0.35);
+}
+
 export function playBottleOpenSound() {
   const ctx = getAudioContext();
   const now = ctx.currentTime;
 
-  // Pop sound
   const pop = ctx.createOscillator();
   const popGain = ctx.createGain();
   pop.type = 'sine';
@@ -76,7 +100,6 @@ export function playBottleOpenSound() {
   pop.start(now);
   pop.stop(now + 0.12);
 
-  // Fizz / hiss after the pop
   const fizz = ctx.createBufferSource();
   const fizzLen = ctx.sampleRate * 0.5;
   const fizzBuf = ctx.createBuffer(1, fizzLen, ctx.sampleRate);
