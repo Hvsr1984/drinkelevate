@@ -54,14 +54,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           )}
         </div>
         <div className="p-3 sm:p-5">
-          <h3 className="font-display text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+          <h3 className="font-display text-base sm:text-lg text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-1">
             {product.node.title}
           </h3>
-          <p className="text-muted-foreground text-sm font-body line-clamp-2 mb-4">
+          <p className="text-muted-foreground text-xs sm:text-sm font-body line-clamp-2 mb-3 sm:mb-4 hidden sm:block">
             {product.node.description}
           </p>
-          <div className="flex items-center justify-between">
-            <span className="text-primary font-display text-xl font-semibold">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-primary font-display text-lg sm:text-xl font-semibold">
               ₹{parseFloat(price.amount).toFixed(0)}
             </span>
             <Button
