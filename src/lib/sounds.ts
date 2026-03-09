@@ -126,7 +126,6 @@ export function playBottleOpenSound() {
   fizz.start(now + 0.05);
   fizz.stop(now + 0.55);
 }
-  const popGain = ctx.createGain();
   pop.type = 'sine';
   pop.frequency.setValueAtTime(600, now);
   pop.frequency.exponentialRampToValueAtTime(150, now + 0.08);
