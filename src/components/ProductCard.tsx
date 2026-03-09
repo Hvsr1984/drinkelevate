@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Loader2 } from "lucide-react";
+import { ShoppingCart, Loader2, Check } from "lucide-react";
 import { useCartStore, type ShopifyProduct } from "@/stores/cartStore";
 import { playBubbleSound, playBottleOpenSound } from "@/lib/sounds";
 import { toast } from "sonner";
@@ -12,6 +13,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
+  const [justAdded, setJustAdded] = useState(false);
   const variant = product.node.variants.edges[0]?.node;
   const image = product.node.images.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
