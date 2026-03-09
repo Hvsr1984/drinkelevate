@@ -5,8 +5,9 @@ import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, ShoppingCart, Loader2 } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
+import { playBubbleSound, playBottleOpenSound } from "@/lib/sounds";
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -51,6 +52,8 @@ const ProductDetail = () => {
 
   const handleAddToCart = async () => {
     if (!variant) return;
+    playBottleOpenSound();
+    playBubbleSound();
     await addItem({
       product: { node: product },
       variantId: variant.id,

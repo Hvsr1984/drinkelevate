@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Loader2 } from "lucide-react";
+import { ShoppingCart, Loader2, Check } from "lucide-react";
 import { useCartStore, type ShopifyProduct } from "@/stores/cartStore";
 import { playBubbleSound, playBottleOpenSound } from "@/lib/sounds";
 import { toast } from "sonner";
@@ -12,6 +13,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
+  const [justAdded, setJustAdded] = useState(false);
   const variant = product.node.variants.edges[0]?.node;
   const image = product.node.images.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
@@ -30,6 +32,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1500);
     toast.success("Added to cart", {
       description: product.node.title,
       position: "top-center",
@@ -45,27 +49,38 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               src={image.url}
               alt={image.altText || product.node.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
           )}
         </div>
-        <div className="p-5">
-          <h3 className="font-display text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+        <div className="p-3 sm:p-5">
+          <h3 className="font-display text-base sm:text-lg text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-1">
             {product.node.title}
           </h3>
-          <p className="text-muted-foreground text-sm font-body line-clamp-2 mb-4">
+          <p className="text-muted-foreground text-xs sm:text-sm font-body line-clamp-2 mb-3 sm:mb-4 hidden sm:block">
             {product.node.description}
           </p>
-          <div className="flex items-center justify-between">
-            <span className="text-primary font-display text-xl font-semibold">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-primary font-display text-lg sm:text-xl font-semibold">
               ₹{parseFloat(price.amount).toFixed(0)}
             </span>
             <Button
               onClick={handleAddToCart}
               disabled={isLoading || !variant}
               size="sm"
-              className="bg-gradient-gold text-primary-foreground hover:opacity-90"
+              className={`transition-all duration-300 ${
+                justAdded
+                  ? 'bg-accent text-accent-foreground scale-110'
+                  : 'bg-gradient-gold text-primary-foreground hover:opacity-90 hover:scale-105 active:scale-95'
+              }`}
             >
-              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-1" /> Add</>}
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : justAdded ? (
+                <><Check className="w-4 h-4 mr-1" /> Added</>
+              ) : (
+                <><ShoppingCart className="w-4 h-4 mr-1" /> Add</>
+              )}
             </Button>
           </div>
         </div>
