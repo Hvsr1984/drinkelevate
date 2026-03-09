@@ -67,9 +67,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               onClick={handleAddToCart}
               disabled={isLoading || !variant}
               size="sm"
-              className="bg-gradient-gold text-primary-foreground hover:opacity-90"
+              className={`transition-all duration-300 ${
+                justAdded
+                  ? 'bg-accent text-accent-foreground scale-110'
+                  : 'bg-gradient-gold text-primary-foreground hover:opacity-90 hover:scale-105 active:scale-95'
+              }`}
             >
-              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-1" /> Add</>}
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : justAdded ? (
+                <><Check className="w-4 h-4 mr-1" /> Added</>
+              ) : (
+                <><ShoppingCart className="w-4 h-4 mr-1" /> Add</>
+              )}
             </Button>
           </div>
         </div>
