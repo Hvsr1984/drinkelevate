@@ -52,6 +52,8 @@ const ProductDetail = () => {
 
   const handleAddToCart = async () => {
     if (!variant) return;
+    playBottleOpenSound();
+    playBubbleSound();
     await addItem({
       product: { node: product },
       variantId: variant.id,
