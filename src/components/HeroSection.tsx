@@ -1,4 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import { WaterBubbles } from "./WaterBubbles";
 
 export const HeroSection = () => {
   return (
@@ -9,6 +10,7 @@ export const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-background/70" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+      <WaterBubbles count={20} />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <p className="text-primary font-body text-sm tracking-[0.4em] uppercase mb-6 animate-fade-in-up">
