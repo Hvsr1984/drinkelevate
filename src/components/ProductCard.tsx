@@ -49,10 +49,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               src={image.url}
               alt={image.altText || product.node.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
           )}
         </div>
-        <div className="p-5">
+        <div className="p-3 sm:p-5">
           <h3 className="font-display text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
             {product.node.title}
           </h3>
