@@ -40,6 +40,9 @@ export const Navbar = () => {
           <a href="#about" onClick={() => setMobileOpen(false)} className="block text-sm font-body text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase py-2">
             About
           </a>
+          <Link to="/purity-report" onClick={() => setMobileOpen(false)} className="block text-sm font-body text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase py-2">
+            Purity
+          </Link>
         </div>
       )}
     </nav>

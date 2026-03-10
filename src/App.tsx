@@ -18,6 +18,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/product/:handle" element={<ProductDetail />} />
+        <Route path="/purity-report" element={<PurityReport />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
