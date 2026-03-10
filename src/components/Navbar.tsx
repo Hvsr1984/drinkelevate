@@ -22,6 +22,9 @@ export const Navbar = () => {
             <a href="#about" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">
               About
             </a>
+            <Link to="/purity-report" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">
+              Purity
+            </Link>
           </div>
           <CartDrawer />
           <Button variant="ghost" size="icon" className="sm:hidden h-9 w-9" onClick={() => setMobileOpen(!mobileOpen)}>
