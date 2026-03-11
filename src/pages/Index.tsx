@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { PromoBanner } from "@/components/PromoBanner";
 import { HeroSection } from "@/components/HeroSection";
 import { ProductsSection } from "@/components/ProductsSection";
 import { AboutSection } from "@/components/AboutSection";
