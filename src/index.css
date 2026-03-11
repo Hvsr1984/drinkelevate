@@ -84,6 +84,14 @@
   .shadow-gold {
     box-shadow: 0 0 30px -5px hsl(43 72% 55% / 0.3);
   }
+
+  .shadow-gold-lg {
+    box-shadow: 0 0 50px -5px hsl(43 72% 55% / 0.45);
+  }
+
+  .hero-title-glow {
+    text-shadow: 0 0 60px hsl(43 72% 55% / 0.2);
+  }
 }
 
 @keyframes bubble-rise {
