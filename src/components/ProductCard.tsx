@@ -42,16 +42,20 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/product/${product.node.handle}`} className="group block">
-      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-gold">
-        <div className="aspect-square overflow-hidden bg-secondary">
+      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-gold group-hover:-translate-y-1 relative">
+        {/* Hover glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-lg" />
+        <div className="aspect-square overflow-hidden bg-secondary relative">
           {image && (
             <img
               src={image.url}
               alt={image.altText || product.node.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               loading="lazy"
             />
           )}
+          {/* Water shimmer overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
         <div className="p-3 sm:p-5">
           <h3 className="font-display text-base sm:text-lg text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-1">
