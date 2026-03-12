@@ -33,8 +33,30 @@ const ProductDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="pt-24 pb-16 px-6">
+          <div className="container mx-auto max-w-5xl">
+            <div className="h-4 w-36 bg-muted rounded animate-pulse mb-8" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="aspect-square rounded-lg bg-muted animate-pulse" />
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="h-3 w-32 bg-muted rounded animate-pulse" />
+                <div className="h-8 w-3/4 bg-muted rounded animate-pulse" />
+                <div className="space-y-2 mt-4">
+                  <div className="h-3 w-full bg-muted rounded animate-pulse" />
+                  <div className="h-3 w-5/6 bg-muted rounded animate-pulse" />
+                  <div className="h-3 w-4/6 bg-muted rounded animate-pulse" />
+                </div>
+                <div className="flex items-center gap-6 mt-8">
+                  <div className="h-9 w-20 bg-muted rounded animate-pulse" />
+                  <div className="h-11 w-40 bg-muted rounded animate-pulse" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
       </div>
     );
   }
