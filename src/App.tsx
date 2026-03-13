@@ -30,6 +30,7 @@ const AnimatedRoutes = () => {
 
 const AppContent = () => {
   useCartSync();
+  useSystemTheme();
   return (
     <BrowserRouter>
       <AnimatedRoutes />
