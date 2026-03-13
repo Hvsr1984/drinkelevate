@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useCartSync } from "@/hooks/useCartSync";
+import { useSystemTheme } from "@/hooks/useSystemTheme";
 import PageTransition from "./components/PageTransition";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
@@ -29,6 +30,7 @@ const AnimatedRoutes = () => {
 
 const AppContent = () => {
   useCartSync();
+  useSystemTheme();
   return (
     <BrowserRouter>
       <AnimatedRoutes />
