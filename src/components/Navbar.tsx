@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "./CartDrawer";
-import { Droplets, Menu, X } from "lucide-react";
+import { Droplets, Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSystemTheme } from "@/hooks/useSystemTheme";
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { toggle, isDark } = useSystemTheme();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
@@ -26,6 +28,9 @@ export const Navbar = () => {
               Purity
             </Link>
           </div>
+          <Button variant="ghost" size="icon" className="h-9 w-9" onClick={toggle} aria-label="Toggle theme">
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
           <CartDrawer />
           <Button variant="ghost" size="icon" className="sm:hidden h-9 w-9" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
