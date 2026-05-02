@@ -18,16 +18,16 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     <Link to={`/product/${product.handle}`} className="group block">
       <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-gold group-hover:-translate-y-1 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-lg" />
-        <div className="aspect-square overflow-hidden bg-secondary relative">
+        <div className="aspect-square overflow-hidden bg-gradient-to-br from-secondary via-background to-secondary relative">
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+            className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-700 ease-out drop-shadow-2xl"
             loading="lazy"
-            width={512}
-            height={512}
+            width={1024}
+            height={1024}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
         <div className="p-3 sm:p-5">
           <h3 className="font-display text-base sm:text-lg text-foreground mb-0.5 group-hover:text-primary transition-colors line-clamp-1">
