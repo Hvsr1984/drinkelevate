@@ -36,8 +36,8 @@ const ProductDetail = () => {
             <ArrowLeft className="w-4 h-4" /> Back to Collection
           </Link>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="aspect-square rounded-lg overflow-hidden bg-card border border-border">
-              <img src={product.image} alt={product.title} className="w-full h-full object-cover" width={512} height={512} />
+            <div className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-secondary via-card to-secondary border border-border flex items-center justify-center">
+              <img src={product.image} alt={product.title} className="w-full h-full object-contain p-8 drop-shadow-2xl" width={1024} height={1024} />
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-2">{product.subtitle}</p>
