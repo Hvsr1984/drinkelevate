@@ -84,6 +84,38 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
+
+          <section className="mt-20">
+            <div className="text-center mb-8">
+              <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-2">In the Wild</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-gradient-gold">Lifestyle Gallery</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { src: product.lifestyle.hand, label: "In Hand" },
+                { src: product.lifestyle.table, label: "At the Table" },
+                { src: product.lifestyle.outdoor, label: "Outdoors" },
+              ].map((scene) => (
+                <div
+                  key={scene.label}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-border"
+                >
+                  <img
+                    src={scene.src}
+                    alt={`${product.title} — ${scene.label}`}
+                    loading="lazy"
+                    width={1920}
+                    height={1080}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                  <div className="absolute bottom-3 left-4 text-foreground font-display text-sm tracking-wide">
+                    {scene.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
       <Footer />
