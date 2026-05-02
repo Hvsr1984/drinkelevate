@@ -5,6 +5,31 @@ import alkalineImg from "@/assets/products/alkaline.png";
 import glacierImg from "@/assets/products/glacier.png";
 import coconutImg from "@/assets/products/coconut.png";
 
+import pureHand from "@/assets/lifestyle/pure-hand.jpg";
+import pureTable from "@/assets/lifestyle/pure-table.jpg";
+import pureOutdoor from "@/assets/lifestyle/pure-outdoor.jpg";
+import sparklingHand from "@/assets/lifestyle/sparkling-hand.jpg";
+import sparklingTable from "@/assets/lifestyle/sparkling-table.jpg";
+import sparklingOutdoor from "@/assets/lifestyle/sparkling-outdoor.jpg";
+import mineralsHand from "@/assets/lifestyle/minerals-hand.jpg";
+import mineralsTable from "@/assets/lifestyle/minerals-table.jpg";
+import mineralsOutdoor from "@/assets/lifestyle/minerals-outdoor.jpg";
+import alkalineHand from "@/assets/lifestyle/alkaline-hand.jpg";
+import alkalineTable from "@/assets/lifestyle/alkaline-table.jpg";
+import alkalineOutdoor from "@/assets/lifestyle/alkaline-outdoor.jpg";
+import glacierHand from "@/assets/lifestyle/glacier-hand.jpg";
+import glacierTable from "@/assets/lifestyle/glacier-table.jpg";
+import glacierOutdoor from "@/assets/lifestyle/glacier-outdoor.jpg";
+import coconutHand from "@/assets/lifestyle/coconut-hand.jpg";
+import coconutTable from "@/assets/lifestyle/coconut-table.jpg";
+import coconutOutdoor from "@/assets/lifestyle/coconut-outdoor.jpg";
+
+export interface LifestyleSet {
+  hand: string;
+  table: string;
+  outdoor: string;
+}
+
 export interface Product {
   id: string;
   handle: string;
@@ -12,6 +37,7 @@ export interface Product {
   subtitle: string;
   description: string;
   image: string;
+  lifestyle: LifestyleSet;
   variants: {
     size: string;
     price: number;
