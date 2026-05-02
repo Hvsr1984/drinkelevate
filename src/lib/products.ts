@@ -1,9 +1,9 @@
-import pureImg from "@/assets/products/pure.jpg";
-import sparklingImg from "@/assets/products/sparkling.jpg";
-import mineralsImg from "@/assets/products/minerals.jpg";
-import alkalineImg from "@/assets/products/alkaline.jpg";
-import glacierImg from "@/assets/products/glacier.jpg";
-import coconutImg from "@/assets/products/coconut.jpg";
+import pureImg from "@/assets/products/pure.png";
+import sparklingImg from "@/assets/products/sparkling.png";
+import mineralsImg from "@/assets/products/minerals.png";
+import alkalineImg from "@/assets/products/alkaline.png";
+import glacierImg from "@/assets/products/glacier.png";
+import coconutImg from "@/assets/products/coconut.png";
 
 export interface Product {
   id: string;
