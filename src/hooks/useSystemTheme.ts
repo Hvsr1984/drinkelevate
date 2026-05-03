@@ -6,7 +6,7 @@ const THEME_KEY = "elevate-theme-preference";
 
 const getStored = (): Theme => {
   const v = localStorage.getItem(THEME_KEY);
-  return v === "light" || v === "dark" ? v : "system";
+  return v === "light" || v === "dark" ? v : "dark";
 };
 
 const applyTheme = (theme: Theme) => {
