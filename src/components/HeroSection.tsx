@@ -9,8 +9,8 @@ export const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-background/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+      <div className="absolute inset-0 bg-background/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background" />
       <WaterBubbles count={20} />
       <WaterRipple />
 
