@@ -11,7 +11,7 @@ export const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>(0.15);
 
   return (
-    <section id="about" className="py-24 px-6 bg-card/50 relative overflow-hidden">
+    <section id="about" className="py-24 px-6 bg-gradient-to-b from-background via-card/40 to-background relative overflow-hidden">
       {/* Background water shimmer */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-3xl animate-pulse-slow" />
