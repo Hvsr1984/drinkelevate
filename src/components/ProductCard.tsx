@@ -37,10 +37,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <p className="text-muted-foreground text-xs sm:text-sm font-body line-clamp-2 mb-3 sm:mb-4 hidden sm:block">
             {product.description}
           </p>
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-primary font-display text-lg sm:text-xl font-semibold">
-              ₹{product.variants[0].price}
-            </span>
+          <div className="flex items-center justify-end gap-2">
             <Button
               onClick={handleOrder}
               size="sm"

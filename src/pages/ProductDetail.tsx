@@ -64,9 +64,6 @@ const ProductDetail = () => {
               </div>
 
               <div className="flex items-center gap-6 mb-8">
-                <span className="text-primary font-display text-3xl font-bold">
-                  ₹{variant.price}
-                </span>
                 <Button
                   onClick={handleOrder}
                   size="lg"
@@ -90,26 +87,28 @@ const ProductDetail = () => {
               <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-2">In the Wild</p>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-gradient-gold">Lifestyle Gallery</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               {[
                 { src: product.lifestyle.hand, label: "In Hand" },
                 { src: product.lifestyle.table, label: "At the Table" },
                 { src: product.lifestyle.outdoor, label: "Outdoors" },
-              ].map((scene) => (
+              ].map((scene, i) => (
                 <div
                   key={scene.label}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-border"
+                  className={`group relative aspect-[16/10] overflow-hidden rounded-xl border border-border shadow-2xl ${
+                    i === 2 ? "lg:col-span-2 lg:aspect-[21/9]" : ""
+                  }`}
                 >
                   <img
                     src={scene.src}
                     alt={`${product.title} — ${scene.label}`}
                     loading="lazy"
                     width={1920}
-                    height={1080}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    height={1200}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-                  <div className="absolute bottom-3 left-4 text-foreground font-display text-sm tracking-wide">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-5 left-6 text-foreground font-display text-lg md:text-xl tracking-wide">
                     {scene.label}
                   </div>
                 </div>
