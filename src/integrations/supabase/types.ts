@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      telegram_messages: {
+        Row: {
+          chat_id: number
+          created_at: string
+          first_name: string | null
+          raw_update: Json
+          text: string | null
+          update_id: number
+          user_id: number | null
+          username: string | null
+        }
+        Insert: {
+          chat_id: number
+          created_at?: string
+          first_name?: string | null
+          raw_update: Json
+          text?: string | null
+          update_id: number
+          user_id?: number | null
+          username?: string | null
+        }
+        Update: {
+          chat_id?: number
+          created_at?: string
+          first_name?: string | null
+          raw_update?: Json
+          text?: string | null
+          update_id?: number
+          user_id?: number | null
+          username?: string | null
+        }
+        Relationships: []
+      }
+      telegram_subscribers: {
+        Row: {
+          chat_id: number
+          created_at: string
+          first_name: string | null
+          last_seen_at: string
+          username: string | null
+        }
+        Insert: {
+          chat_id: number
+          created_at?: string
+          first_name?: string | null
+          last_seen_at?: string
+          username?: string | null
+        }
+        Update: {
+          chat_id?: number
+          created_at?: string
+          first_name?: string | null
+          last_seen_at?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
