@@ -22,21 +22,38 @@ async function tgSend(chatId: number | string, text: string) {
   return { ok: r.ok, status: r.status, body: await r.json() };
 }
 
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
 
   try {
+    // --- Authentication: require a valid signed-in Supabase user ---
+    const authHeader = req.headers.get('Authorization') ?? '';
+    const token = authHeader.replace(/^Bearer\s+/i, '').trim();
+    if (!token) return json({ error: 'Unauthorized' }, 401);
+
+    const authClient = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_ANON_KEY')!,
+      { global: { headers: { Authorization: `Bearer ${token}` } } },
+    );
+    const { data: userData, error: userErr } = await authClient.auth.getUser();
+    if (userErr || !userData?.user) return json({ error: 'Unauthorized' }, 401);
+
     const { mode, chat_id, text } = await req.json();
-    if (!text || typeof text !== 'string') {
-      return new Response(JSON.stringify({ error: 'text required' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+    if (!text || typeof text !== 'string' || text.length > 4000) {
+      return json({ error: 'text required (max 4000 chars)' }, 400);
     }
 
     if (mode === 'broadcast') {
       const supabase = createClient(
         Deno.env.get('SUPABASE_URL')!,
-        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
       );
       const { data: subs, error } = await supabase
         .from('telegram_subscribers').select('chat_id');
@@ -46,26 +63,16 @@ Deno.serve(async (req) => {
       for (const s of subs ?? []) {
         const res = await tgSend(s.chat_id, text);
         if (res.ok) sent++; else failed++;
-        await new Promise((r) => setTimeout(r, 40)); // rate limit
+        await new Promise((r) => setTimeout(r, 40));
       }
-      return new Response(JSON.stringify({ ok: true, sent, failed }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return json({ ok: true, sent, failed });
     }
 
-    if (!chat_id) {
-      return new Response(JSON.stringify({ error: 'chat_id required' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    if (!chat_id) return json({ error: 'chat_id required' }, 400);
     const res = await tgSend(chat_id, text);
-    return new Response(JSON.stringify(res), {
-      status: res.ok ? 200 : 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return json({ ok: res.ok, status: res.status }, res.ok ? 200 : 502);
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e) }), {
-      status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    console.error('telegram-send error', e);
+    return json({ error: 'Internal server error' }, 500);
   }
 });
