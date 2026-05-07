@@ -38,7 +38,11 @@ const ProductDetail = () => {
             <ArrowLeft className="w-4 h-4" /> Back to Collection
           </Link>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-secondary via-card to-secondary border border-border flex items-center justify-center">
+            <div
+              onMouseEnter={() => playBubbleSound()}
+              onTouchStart={() => playBubbleSound()}
+              className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-secondary via-card to-secondary border border-border flex items-center justify-center"
+            >
               <img src={product.image} alt={product.title} className="w-full h-full object-contain p-8 drop-shadow-2xl" width={1024} height={1024} />
             </div>
             <div className="flex flex-col justify-center">
