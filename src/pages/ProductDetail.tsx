@@ -25,6 +25,7 @@ const ProductDetail = () => {
   const variant = product.variants[selectedVariantIdx];
 
   const handleOrder = () => {
+    playBottleOpenSound();
     window.open(getWhatsAppOrderUrl(product, variant), "_blank");
   };
 
