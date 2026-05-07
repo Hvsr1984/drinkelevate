@@ -1,22 +1,38 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { type Product, getWhatsAppOrderUrl } from "@/lib/products";
+import { playBubbleSound, playBottleOpenSound } from "@/lib/sounds";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const lastBubbleRef = useRef(0);
+
   const handleOrder = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    playBottleOpenSound();
     window.open(getWhatsAppOrderUrl(product), "_blank");
+  };
+
+  const handleHoverBubble = () => {
+    const now = Date.now();
+    if (now - lastBubbleRef.current < 700) return;
+    lastBubbleRef.current = now;
+    playBubbleSound();
   };
 
   return (
     <Link to={`/product/${product.handle}`} className="group block">
-      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-gold-lg group-hover:-translate-y-1 relative">
+      <div
+        onMouseEnter={handleHoverBubble}
+        onTouchStart={handleHoverBubble}
+        className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-gold-lg group-hover:-translate-y-1 relative"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-lg" />
         <div className="aspect-square overflow-hidden bg-gradient-to-br from-secondary via-background to-secondary relative">
           {/* Soft radial spotlight */}
