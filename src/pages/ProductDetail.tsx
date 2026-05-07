@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, MessageCircle, Phone } from "lucide-react";
 import { WHATSAPP_NUMBER, OWNER_NAME } from "@/lib/products";
+import { playBottleOpenSound, playBubbleSound } from "@/lib/sounds";
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
