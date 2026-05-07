@@ -190,3 +190,13 @@
 .animate-pulse-slow {
   animation: pulse-slow 6s ease-in-out infinite;
 }
+
+@keyframes bottle-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.animate-bottle-zoom {
+  animation: bottle-zoom 5s ease-in-out infinite;
+  will-change: transform;
+}
