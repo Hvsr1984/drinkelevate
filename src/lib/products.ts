@@ -30,6 +30,8 @@ export interface LifestyleSet {
   outdoor: string;
 }
 
+export type ProductCategory = "Still" | "Sparkling" | "Enhanced" | "Specialty";
+
 export interface Product {
   id: string;
   handle: string;
@@ -37,12 +39,15 @@ export interface Product {
   subtitle: string;
   description: string;
   image: string;
+  category: ProductCategory;
   lifestyle: LifestyleSet;
   variants: {
     size: string;
     price: number;
   }[];
 }
+
+export const PRODUCT_CATEGORIES: ProductCategory[] = ["Still", "Sparkling", "Enhanced", "Specialty"];
 
 export const WHATSAPP_NUMBER = "919509878807";
 export const OWNER_NAME = "Harshvardhan Singh Rajawat";
