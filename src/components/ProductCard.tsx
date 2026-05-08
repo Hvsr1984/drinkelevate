@@ -49,15 +49,18 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
-        <div className="p-3 sm:p-5">
-          <h3 className="font-display text-base sm:text-lg text-foreground mb-0.5 group-hover:text-primary transition-colors line-clamp-1">
+        <div className="p-2.5 sm:p-4">
+          <p className="text-primary/70 text-[10px] font-body tracking-[0.18em] uppercase mb-0.5">
+            {product.category} · {product.subtitle}
+          </p>
+          <h3 className="font-display text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-1">
             {product.title}
           </h3>
-          <p className="text-primary/70 text-xs font-body tracking-wider uppercase mb-1">{product.subtitle}</p>
-          <p className="text-muted-foreground text-xs sm:text-sm font-body line-clamp-2 mb-3 sm:mb-4 hidden sm:block">
-            {product.description}
-          </p>
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-between gap-2 mt-2">
+            <p className="font-display text-sm sm:text-base text-primary">
+              <span className="text-[10px] text-muted-foreground tracking-wider mr-1 uppercase">From</span>
+              ₹{Math.min(...product.variants.map((v) => v.price))}
+            </p>
             <Button
               onClick={handleOrder}
               size="sm"
