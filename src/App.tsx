@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useSystemTheme } from "@/hooks/useSystemTheme";
 import PageTransition from "./components/PageTransition";
 import Index from "./pages/Index";
@@ -42,6 +43,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AppContent />
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
