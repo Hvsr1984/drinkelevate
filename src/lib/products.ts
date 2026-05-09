@@ -30,8 +30,6 @@ export interface LifestyleSet {
   outdoor: string;
 }
 
-export type ProductCategory = "Still" | "Sparkling" | "Enhanced" | "Specialty";
-
 export interface Product {
   id: string;
   handle: string;
@@ -39,15 +37,12 @@ export interface Product {
   subtitle: string;
   description: string;
   image: string;
-  category: ProductCategory;
   lifestyle: LifestyleSet;
   variants: {
     size: string;
     price: number;
   }[];
 }
-
-export const PRODUCT_CATEGORIES: ProductCategory[] = ["Still", "Sparkling", "Enhanced", "Specialty"];
 
 export const WHATSAPP_NUMBER = "919509878807";
 export const OWNER_NAME = "Harshvardhan Singh Rajawat";
@@ -63,7 +58,6 @@ export function getWhatsAppOrderUrl(product: Product, variant?: { size: string; 
 export const products: Product[] = [
   {
     id: "pure",
-    category: "Still",
     handle: "pure",
     title: "ELEVATE Pure",
     subtitle: "Still Water",
@@ -78,7 +72,6 @@ export const products: Product[] = [
   },
   {
     id: "sparkling",
-    category: "Sparkling",
     handle: "sparkling",
     title: "ELEVATE Sparkling",
     subtitle: "Soda Water",
@@ -93,7 +86,6 @@ export const products: Product[] = [
   },
   {
     id: "minerals",
-    category: "Enhanced",
     handle: "minerals-plus",
     title: "ELEVATE Minerals+",
     subtitle: "Enhanced Water",
@@ -108,7 +100,6 @@ export const products: Product[] = [
   },
   {
     id: "alkaline",
-    category: "Enhanced",
     handle: "alkaline",
     title: "ELEVATE Alkaline",
     subtitle: "pH Balanced",
@@ -123,7 +114,6 @@ export const products: Product[] = [
   },
   {
     id: "glacier",
-    category: "Still",
     handle: "glacier",
     title: "ELEVATE Glacier",
     subtitle: "Arctic Spring",
@@ -138,7 +128,6 @@ export const products: Product[] = [
   },
   {
     id: "coconut",
-    category: "Specialty",
     handle: "coconut",
     title: "ELEVATE Coconut",
     subtitle: "Tropical Hydration",

@@ -26,6 +26,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     playBubbleSound();
   };
 
+  const firstVariant = product.variants[0];
+
   return (
     <Link to={`/product/${product.handle}`} className="group block">
       <div
@@ -51,16 +53,20 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className="p-2.5 sm:p-4">
           <p className="text-primary/70 text-[10px] font-body tracking-[0.18em] uppercase mb-0.5">
-            {product.category} · {product.subtitle}
+            {product.subtitle}
           </p>
-          <h3 className="font-display text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-1">
+          <h3 className="font-display text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">
             {product.title}
           </h3>
           <div className="flex items-center justify-between gap-2 mt-2">
-            <p className="font-display text-sm sm:text-base text-primary">
-              <span className="text-[10px] text-muted-foreground tracking-wider mr-1 uppercase">From</span>
-              ₹{Math.min(...product.variants.map((v) => v.price))}
-            </p>
+            <div>
+              <p className="font-display text-sm sm:text-base text-primary">
+                ₹{firstVariant.price}
+              </p>
+              <p className="text-[10px] text-muted-foreground font-body">
+                {product.variants.map((v) => v.size).join(" · ")}
+              </p>
+            </div>
             <Button
               onClick={handleOrder}
               size="sm"
