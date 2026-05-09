@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "./CartDrawer";
-import { Droplets, Menu, X, Sun, Moon } from "lucide-react";
+import { Droplets, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSystemTheme } from "@/hooks/useSystemTheme";
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
