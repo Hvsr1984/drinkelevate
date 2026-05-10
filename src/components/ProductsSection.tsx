@@ -30,10 +30,9 @@ export const ProductsSection = () => {
           {products.map((product, i) => (
             <div
               key={product.id}
-              className={`transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: isVisible ? `${100 + i * 60}ms` : "0ms" }}
+              className={`reveal-up ${
+                isVisible ? "is-visible" : ""
+              } reveal-up-delay-${Math.min(i + 1, 6)}`}
             >
               <ProductCard product={product} />
             </div>

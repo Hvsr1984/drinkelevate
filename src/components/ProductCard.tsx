@@ -70,7 +70,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <Button
               onClick={handleOrder}
               size="sm"
-              className="h-7 px-2.5 text-[11px] rounded-md bg-[#25D366] hover:bg-[#1da851] text-white hover:scale-105 active:scale-95 transition-all duration-300 [&_svg]:size-3"
+              className="btn-luxury h-7 px-2.5 text-[11px] rounded-md bg-[#25D366] hover:bg-[#1da851] text-white [&_svg]:size-3"
             >
               <MessageCircle className="mr-1" /> Order
             </Button>
